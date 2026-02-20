@@ -1,0 +1,11 @@
+name: Secrets-Guard Demo
+
+on:
+  pull_request:
+
+jobs:
+  secrets-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pinfloyd/secrets-guard@v1.0.0
