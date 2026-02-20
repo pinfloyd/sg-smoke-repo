@@ -1,0 +1,2 @@
+# demo leak
+OPENAI_API_KEY = "sk-THIS_IS_A_DEMO_SECRET_123456"
