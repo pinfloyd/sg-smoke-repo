@@ -1,0 +1,14 @@
+name: Secrets-Guard Demo
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  secrets-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: pinfloyd/secrets-guard@v2.0.0
