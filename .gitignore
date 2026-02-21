@@ -1,0 +1,2 @@
+# Local backup artifacts (do not commit)
+.github/workflows/*.bak.*
