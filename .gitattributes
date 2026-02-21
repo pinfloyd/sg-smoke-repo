@@ -1,2 +1,8 @@
-# Deterministic evidence: force LF in working tree regardless of core.autocrlf
+* text=auto
+
+# Keep control files deterministic on Windows regardless of core.autocrlf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
+# Deterministic evidence: force LF in working tree
 evidence/leak-push/* text eol=lf
