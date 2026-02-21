@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - uses: pinfloyd/secrets-guard@v2.0.1
+      - uses: pinfloyd/secrets-guard@v2.1.0
