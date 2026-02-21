@@ -1,0 +1,13 @@
+SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+DATE_UTC = 2026-02-21T07:21:15Z
+REPO = pinfloyd/sg-smoke-repo
+BRANCH = leak-test
+PUSH_HEAD_SHA = ef02843964291ff073d249758d37214fb98fd2ce
+PINNED_ACTION = pinfloyd/secrets-guard@v2.1.0
+GH_CLI = FOUND
+RUN_MATCH = NOT_FOUND
+RUN_LOG = NOT_AVAILABLE (run not visible yet via gh, or gh not authenticated)
+
+=== RUN_LOG_BEGIN ===
+(missing)
+=== RUN_LOG_END ===

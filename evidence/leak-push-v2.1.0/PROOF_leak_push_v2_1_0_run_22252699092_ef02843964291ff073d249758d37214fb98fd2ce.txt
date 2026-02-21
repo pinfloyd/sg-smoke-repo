@@ -1,0 +1,212 @@
+SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+DATE_UTC = 2026-02-21T07:41:12Z
+REPO = pinfloyd/sg-smoke-repo
+BRANCH = leak-test
+PUSH_HEAD_SHA = ef02843964291ff073d249758d37214fb98fd2ce
+RUN_ID = 22252699092
+RUN_URL = https://github.com/pinfloyd/sg-smoke-repo/actions/runs/22252699092
+RUN_STATUS = completed
+RUN_CONCLUSION = success
+RUN_EVENT = push
+WORKFLOW = Secrets-Guard Demo
+RUN_CREATED_AT = 02/21/2026 07:21:19
+PINNED_ACTION = pinfloyd/secrets-guard@v2.1.0
+
+=== RUN_LOG_BEGIN ===
+secrets-guard	Set up job	я╗┐2026-02-21T07:21:22.6596058Z Current runner version: '2.331.0'
+secrets-guard	Set up job	2026-02-21T07:21:22.6621688Z ##[group]Runner Image Provisioner
+secrets-guard	Set up job	2026-02-21T07:21:22.6622472Z Hosted Compute Agent
+secrets-guard	Set up job	2026-02-21T07:21:22.6623342Z Version: 20260123.484
+secrets-guard	Set up job	2026-02-21T07:21:22.6623964Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+secrets-guard	Set up job	2026-02-21T07:21:22.6624652Z Build Date: 2026-01-23T19:41:17Z
+secrets-guard	Set up job	2026-02-21T07:21:22.6625377Z Worker ID: {3bf63334-75e5-4dbd-a7b2-3461f881e15c}
+secrets-guard	Set up job	2026-02-21T07:21:22.6626044Z Azure Region: eastus2
+secrets-guard	Set up job	2026-02-21T07:21:22.6626587Z ##[endgroup]
+secrets-guard	Set up job	2026-02-21T07:21:22.6628003Z ##[group]Operating System
+secrets-guard	Set up job	2026-02-21T07:21:22.6628645Z Ubuntu
+secrets-guard	Set up job	2026-02-21T07:21:22.6629105Z 24.04.3
+secrets-guard	Set up job	2026-02-21T07:21:22.6629594Z LTS
+secrets-guard	Set up job	2026-02-21T07:21:22.6630031Z ##[endgroup]
+secrets-guard	Set up job	2026-02-21T07:21:22.6630531Z ##[group]Runner Image
+secrets-guard	Set up job	2026-02-21T07:21:22.6631111Z Image: ubuntu-24.04
+secrets-guard	Set up job	2026-02-21T07:21:22.6631602Z Version: 20260201.15.1
+secrets-guard	Set up job	2026-02-21T07:21:22.6632681Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+secrets-guard	Set up job	2026-02-21T07:21:22.6634760Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+secrets-guard	Set up job	2026-02-21T07:21:22.6635673Z ##[endgroup]
+secrets-guard	Set up job	2026-02-21T07:21:22.6636815Z ##[group]GITHUB_TOKEN Permissions
+secrets-guard	Set up job	2026-02-21T07:21:22.6639550Z Contents: read
+secrets-guard	Set up job	2026-02-21T07:21:22.6640110Z Metadata: read
+secrets-guard	Set up job	2026-02-21T07:21:22.6640697Z Packages: read
+secrets-guard	Set up job	2026-02-21T07:21:22.6641196Z ##[endgroup]
+secrets-guard	Set up job	2026-02-21T07:21:22.6643658Z Secret source: Actions
+secrets-guard	Set up job	2026-02-21T07:21:22.6644784Z Prepare workflow directory
+secrets-guard	Set up job	2026-02-21T07:21:22.6970509Z Prepare all required actions
+secrets-guard	Set up job	2026-02-21T07:21:22.7010184Z Getting action download info
+secrets-guard	Set up job	2026-02-21T07:21:22.9956698Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+secrets-guard	Set up job	2026-02-21T07:21:23.0914178Z Download action repository 'pinfloyd/secrets-guard@v2.1.0' (SHA:e465e54cb714c70b287d28ce4b219c8bd9ae793a)
+secrets-guard	Set up job	2026-02-21T07:21:23.4522715Z Complete job name: secrets-guard
+secrets-guard	Run actions/checkout@v4	я╗┐2026-02-21T07:21:23.5221290Z ##[group]Run actions/checkout@v4
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5222194Z with:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5222585Z   fetch-depth: 2
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5223287Z   repository: pinfloyd/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5223935Z   token: ***
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5224303Z   ssh-strict: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5224679Z   ssh-user: git
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5225066Z   persist-credentials: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5225489Z   clean: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5225878Z   sparse-checkout-cone-mode: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5226335Z   fetch-tags: false
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5226725Z   show-progress: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5227110Z   lfs: false
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5227469Z   submodules: false
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5227855Z   set-safe-directory: true
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.5228531Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6301277Z Syncing repository: pinfloyd/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6303786Z ##[group]Getting Git version info
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6304569Z Working directory is '/home/runner/work/sg-smoke-repo/sg-smoke-repo'
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6306367Z [command]/usr/bin/git version
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6368735Z git version 2.52.0
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6411411Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6426964Z Temporarily overriding HOME='/home/runner/work/_temp/5fd3d88c-e3b1-4b19-b588-773cbe5be051' before making global git config changes
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6428331Z Adding repository directory to the temporary git global config as a safe directory
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6440565Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-smoke-repo/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6478690Z Deleting the contents of '/home/runner/work/sg-smoke-repo/sg-smoke-repo'
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6482031Z ##[group]Initializing the repository
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6486573Z [command]/usr/bin/git init /home/runner/work/sg-smoke-repo/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6574682Z hint: Using 'master' as the name for the initial branch. This default branch name
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6576328Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6577912Z hint: to use in all of your new repositories, which will suppress this warning,
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6579440Z hint: call:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6579831Z hint:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6580309Z hint: 	git config --global init.defaultBranch <name>
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6580883Z hint:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6581418Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6582310Z hint: 'development'. The just-created branch can be renamed via this command:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6583267Z hint:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6583648Z hint: 	git branch -m <name>
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6584077Z hint:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6584700Z hint: Disable this message with "git config set advice.defaultBranchName false"
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6585774Z Initialized empty Git repository in /home/runner/work/sg-smoke-repo/sg-smoke-repo/.git/
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6594432Z [command]/usr/bin/git remote add origin https://github.com/pinfloyd/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6630066Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6630815Z ##[group]Disabling automatic garbage collection
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6636359Z [command]/usr/bin/git config --local gc.auto 0
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6669387Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6670858Z ##[group]Setting up auth
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6680214Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.6715087Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7068646Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7106751Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7336897Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7373566Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7610325Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7645601Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7646924Z ##[group]Fetching the repository
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.7654588Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin +ef02843964291ff073d249758d37214fb98fd2ce:refs/remotes/origin/leak-test
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9166123Z From https://github.com/pinfloyd/sg-smoke-repo
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9167197Z  * [new ref]         ef02843964291ff073d249758d37214fb98fd2ce -> origin/leak-test
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9197719Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9198803Z ##[group]Determining the checkout info
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9200014Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9204753Z [command]/usr/bin/git sparse-checkout disable
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9243795Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9269159Z ##[group]Checking out the ref
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9272966Z [command]/usr/bin/git checkout --progress --force -B leak-test refs/remotes/origin/leak-test
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9321487Z Switched to a new branch 'leak-test'
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9324421Z branch 'leak-test' set up to track 'origin/leak-test'.
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9330782Z ##[endgroup]
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9363819Z [command]/usr/bin/git log -1 --format=%H
+secrets-guard	Run actions/checkout@v4	2026-02-21T07:21:23.9385495Z ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	я╗┐2026-02-21T07:21:23.9654277Z ##[group]Run pinfloyd/secrets-guard@v2.1.0
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9654890Z ##[endgroup]
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9758382Z ##[group]Run set -euo pipefail
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9758988Z [36;1mset -euo pipefail[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9759460Z [36;1mecho "EVENT: $GITHUB_EVENT_NAME"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9760008Z [36;1mecho "GITHUB_SHA: ${GITHUB_SHA:-}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9760511Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9761226Z [36;1m# Resolve base/head SHAs deterministically by event type[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9761950Z [36;1mif [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9762519Z [36;1m  BASE_SHA=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9763080Z [36;1m  HEAD_SHA=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9763527Z [36;1m  echo "PR_BASE_SHA: ${BASE_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9764065Z [36;1m  echo "PR_HEAD_SHA: ${HEAD_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9764621Z [36;1m  # Ensure BASE_SHA exists locally for diff[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9765414Z [36;1m  git fetch --no-tags --prune --depth=50 origin "${BASE_SHA}" >/dev/null 2>&1 || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9766236Z [36;1m  RANGE="${BASE_SHA}..${HEAD_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9766821Z [36;1melif [ "${GITHUB_EVENT_NAME}" = "push" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9767403Z [36;1m  # Prefer before..after if available[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9768024Z [36;1m  BEFORE="b8d0cc7a3bebb06a7b667c90ebeed065462da3d3"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9768687Z [36;1m  AFTER="ef02843964291ff073d249758d37214fb98fd2ce"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9769282Z [36;1m  echo "PUSH_BEFORE: ${BEFORE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9769792Z [36;1m  echo "PUSH_AFTER:  ${AFTER}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9770510Z [36;1m  git fetch --no-tags --prune --depth=50 origin "${BEFORE}" >/dev/null 2>&1 || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9771247Z [36;1m  RANGE="${BEFORE}..${AFTER}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9771706Z [36;1melse[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9772349Z [36;1m  # Manual runs: diff HEAD~1..HEAD if possible, otherwise scan nothing deterministically[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9773283Z [36;1m  if git rev-parse HEAD~1 >/dev/null 2>&1; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9773854Z [36;1m    RANGE="HEAD~1..HEAD"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9774298Z [36;1m  else[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9774652Z [36;1m    RANGE=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9775032Z [36;1m  fi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9775408Z [36;1m  echo "MANUAL_RANGE: ${RANGE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9775887Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9776227Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9776581Z [36;1mif [ -z "${RANGE}" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9777083Z [36;1m  echo "DIFF_RANGE: (empty) -> OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9777593Z [36;1m  echo "SECRETS-GUARD: OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9778047Z [36;1m  exit 0[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9778403Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9778738Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9779090Z [36;1mecho "DIFF_RANGE: ${RANGE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9779540Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9780180Z [36;1m# Create a unified=0 diff (minimal), then extract only added lines (ignore +++ file headers)[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9781092Z [36;1mgit diff --unified=0 "${RANGE}" > /tmp/sg_diff.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9781693Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9782153Z [36;1mecho "DIFF_BYTES: $(wc -c < /tmp/sg_diff.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9782968Z [36;1mecho "DIFF_LINES: $(wc -l < /tmp/sg_diff.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9783551Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9783902Z [36;1m# Added lines only[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9784583Z [36;1mgrep -E '^\+' /tmp/sg_diff.txt | grep -Ev '^\+\+\+' | sed 's/^\+//' > /tmp/sg_added.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9785312Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9785869Z [36;1mecho "ADDED_LINES: $(wc -l < /tmp/sg_added.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9786511Z [36;1mecho "ADDED_PREVIEW_FIRST_30:"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9787053Z [36;1mhead -n 30 /tmp/sg_added.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9787550Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9787975Z [36;1m# Minimal high-signal rule for demo: sk- token[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9788709Z [36;1mif grep -E "sk-[A-Za-z0-9]{20,}" /tmp/sg_added.txt >/dev/null 2>&1; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9789628Z [36;1m  echo "SECRETS-GUARD: VIOLATION DETECTED"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9790209Z [36;1m  echo "Rule: GENERIC_SK_TOKEN_PATTERN"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9790740Z [36;1m  echo "Status: HARD FAIL"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9791192Z [36;1m  exit 1[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9791551Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9791880Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9792359Z [36;1mecho "SECRETS-GUARD: OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9828180Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9828812Z ##[endgroup]
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9904953Z EVENT: push
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9905868Z GITHUB_SHA: ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9907082Z PUSH_BEFORE: b8d0cc7a3bebb06a7b667c90ebeed065462da3d3
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:23.9908345Z PUSH_AFTER:  ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1455202Z DIFF_RANGE: b8d0cc7a3bebb06a7b667c90ebeed065462da3d3..ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1496991Z DIFF_BYTES: 313
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1512570Z DIFF_LINES: 6
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1548467Z ADDED_LINES: 1
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1549165Z ADDED_PREVIEW_FIRST_30:
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1557972Z OPENAI_API_KEY=sk-test-v2-1-0-0000000000000000000000000000000000000000 UTC=2026-02-21T07:21:15Z
+secrets-guard	Run pinfloyd/secrets-guard@v2.1.0	2026-02-21T07:21:24.1573321Z SECRETS-GUARD: OK
+secrets-guard	Post Run actions/checkout@v4	я╗┐2026-02-21T07:21:24.1696933Z Post job cleanup.
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2633396Z [command]/usr/bin/git version
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2668643Z git version 2.52.0
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2710945Z Temporarily overriding HOME='/home/runner/work/_temp/6e2bf628-eb6b-40bb-ab58-3f3406e28f0e' before making global git config changes
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2722517Z Adding repository directory to the temporary git global config as a safe directory
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2724023Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-smoke-repo/sg-smoke-repo
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2756144Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.2788657Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3007033Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3027418Z http.https://github.com/.extraheader
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3040619Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3070310Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3284961Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+secrets-guard	Post Run actions/checkout@v4	2026-02-21T07:21:24.3313921Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+secrets-guard	Complete job	я╗┐2026-02-21T07:21:24.3635021Z Cleaning up orphan processes
+=== RUN_LOG_END ===

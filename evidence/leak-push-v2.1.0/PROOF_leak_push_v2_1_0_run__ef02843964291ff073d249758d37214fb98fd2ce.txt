@@ -1,0 +1,28 @@
+SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+DATE_UTC = 2026-02-21T07:38:43Z
+REPO = pinfloyd/sg-smoke-repo
+BRANCH = leak-test
+PUSH_HEAD_SHA = ef02843964291ff073d249758d37214fb98fd2ce
+RUN_ID = 
+RUN_URL = 
+RUN_STATUS = 
+RUN_CONCLUSION = 
+PINNED_ACTION = pinfloyd/secrets-guard@v2.1.0
+
+=== RUN_LOG_BEGIN ===
+run or job ID required when not running interactively
+
+Usage:  gh run view [<run-id>] [flags]
+
+Flags:
+  -a, --attempt uint      The attempt number of the workflow run
+      --exit-status       Exit with non-zero status if run failed
+  -j, --job string        View a specific job ID from a run
+  -q, --jq expression     Filter JSON output using a jq expression
+      --json fields       Output JSON with the specified fields
+      --log               View full log for either a run or specific job
+      --log-failed        View the log for any failed steps in a run or specific job
+  -t, --template string   Format JSON output using a Go template; see "gh help formatting"
+  -v, --verbose           Show job steps
+  -w, --web               Open run in the browser
+=== RUN_LOG_END ===
