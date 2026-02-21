@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pinfloyd/secrets-guard@v1.0.6
+      - uses: pinfloyd/secrets-guard@v2.0.0
