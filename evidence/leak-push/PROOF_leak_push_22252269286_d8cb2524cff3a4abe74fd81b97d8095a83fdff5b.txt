@@ -1,0 +1,17 @@
+SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+DATE_UTC_APPROX = 2026-02-21
+REPO = pinfloyd/sg-smoke-repo
+BRANCH = leak-test
+PUSH_HEAD_SHA = d8cb2524cff3a4abe74fd81b97d8095a83fdff5b
+RUN_ID = 22252269286
+RUN_CONCLUSION = failure
+
+LOG_FILE = H:\_sg_logs\run_22252269286.log.txt
+LOG_BYTES = 23007
+LOG_SHA256 = 48fb1901a081eb77de3cc352ecb0edc34b1a357ac8f2b0543565f9a9183635d8
+
+ACTION_REF = pinfloyd/secrets-guard@v2.0.1
+ACTION_REPO_DOWNLOAD_SHA = 49c95dec88c0fd667e0a08b716ac8413467a612e
+
+EXPECTED_SIGNALS_PRESENT = true
+SIGNALS = EVENT:push; DIFF_RANGE(before..after); ADDED_LINES:1; added line contains sk-*; VIOLATION DETECTED; HARD FAIL; exit code 1
