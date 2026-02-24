@@ -24,7 +24,6 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
-
           echo "BASE_SHA=${BASE_SHA}"
           echo "HEAD_SHA=${HEAD_SHA}"
 
@@ -36,98 +35,41 @@ jobs:
           git fetch --no-tags --prune --depth=200 origin "${BASE_SHA}" || true
           git fetch --no-tags --prune --depth=200 origin "${HEAD_SHA}" || true
 
-          python3 - << 'PY'
-import json, os, re, subprocess, sys, urllib.request
+          python3 -c "import os,json,re,subprocess,sys,urllib.request; \
+auth=os.environ['L5_AUTH_URL'].rstrip('/'); pin_pk=os.environ['L5_PUBKEY_SHA256'].strip().lower(); pin_img=os.environ['L5_PIN_IMAGE_DIGEST'].strip(); \
+base=os.environ['BASE_SHA']; head=os.environ['HEAD_SHA']; \
+diff=subprocess.check_output(['git','diff','--unified=0',f'{base}..{head}'],text=True,errors='replace'); \
+facts=[]; cur=None; new=None; \
+for ln in diff.splitlines(): \
+  (ln.startswith('+++ b/') and (cur:=ln[6:]) is None) or True; \
+  m=re.match(r'^@@ -\\d+(?:,\\d+)? \\+(\\d+)(?:,(\\d+))? @@',ln); \
+  (m and (new:=int(m.group(1))) is None) or True; \
+  (cur is None or new is None) and None; \
+  (cur is not None and new is not None and ln.startswith('+') and not ln.startswith('+++') and (facts.append({'file':cur,'line':new,'added':ln[1:]}), setattr(sys,'_n',None), (new:=new+1))) or True; \
+  (cur is not None and new is not None and ln.startswith('-') and not ln.startswith('---')) or True; \
+  ((cur is not None and new is not None and (not ln.startswith('+') and not ln.startswith('-')) and (not ln.startswith('\\\\')) and (new:=new+1))) or True; \
+req_obj={'intent':{'action_type':'GIT_COMMIT_DIFF','payload':{'diff_facts':facts}}}; \
+data=json.dumps(req_obj,ensure_ascii=False,separators=(',',':')).encode('utf-8'); \
+req=urllib.request.Request(auth+'/admit',data=data,headers={'Content-Type':'application/json'},method='POST'); \
+try: body=urllib.request.urlopen(req,timeout=25).read().decode('utf-8','replace') \
+except Exception as e: print('L5_CALL_FAILED',str(e)); sys.exit(1); \
+print('L5_RAW_RESPONSE_BEGIN'); print(body[:4000]); print('L5_RAW_RESPONSE_END'); \
+try: o=json.loads(body) \
+except Exception: print('L5_BAD_JSON_RESPONSE'); sys.exit(1); \
+pk=(o.get('authority_pubkey_sha256') or '').strip().lower(); img=(o.get('image_digest') or '').strip(); \
+(pk!=pin_pk) and (print('PIN_FAIL_AUTH_PUBKEY_SHA256',pk,pin_pk), sys.exit(1)); \
+(img!=pin_img) and (print('PIN_FAIL_IMAGE_DIGEST',img,pin_img), sys.exit(1)); \
+decision=''; \
+(isinstance(o.get('decision'),str) and (decision:=o.get('decision').strip())) or True; \
+sp=o.get('signed_payload') or {}; sr=o.get('signed_record') or {}; \
+((not decision) and isinstance(sp.get('decision'),str) and (decision:=sp.get('decision').strip())) or True; \
+((not decision) and isinstance(sr.get('decision'),str) and (decision:=sr.get('decision').strip())) or True; \
+print('DECISION='+decision); \
+if decision!='ALLOW': \
+  f=[]; \
+  (isinstance(sp,dict) and isinstance(sp.get('findings'),list) and (f:=sp.get('findings'))) or True; \
+  print('FINDINGS_COUNT='+str(len(f))); \
+  (len(f)>0 and print(json.dumps(f[:5],ensure_ascii=False))) or True; \
+  sys.exit(1); \
+print('L5_ALLOW_OK')"
 
-auth = os.environ["L5_AUTH_URL"].rstrip("/")
-pin_pk = os.environ["L5_PUBKEY_SHA256"].strip().lower()
-pin_img = os.environ["L5_PIN_IMAGE_DIGEST"].strip()
-base = os.environ["BASE_SHA"]
-head = os.environ["HEAD_SHA"]
-
-diff = subprocess.check_output(["git","diff","--unified=0", f"{base}..{head}"], text=True, errors="replace")
-
-facts=[]
-cur=None
-new=None
-
-for ln in diff.splitlines():
-  if ln.startswith("+++ b/"):
-    cur = ln[6:]
-    continue
-  m = re.match(r"^\@\@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? \@\@", ln)
-  if m:
-    new = int(m.group(1))
-    continue
-  if cur is None or new is None:
-    continue
-  if ln.startswith("+") and not ln.startswith("+++"):
-    facts.append({"file":cur,"line":new,"added":ln[1:]})
-    new += 1
-  elif ln.startswith("-") and not ln.startswith("---"):
-    continue
-  else:
-    if not ln.startswith("\\"):
-      new += 1
-
-req_obj = {
-  "intent": {
-    "action_type": "GIT_COMMIT_DIFF",
-    "payload": {"diff_facts": facts}
-  }
-}
-
-data = json.dumps(req_obj, ensure_ascii=False, separators=(",",":")).encode("utf-8")
-req = urllib.request.Request(auth + "/admit", data=data, headers={"Content-Type":"application/json"}, method="POST")
-
-try:
-  with urllib.request.urlopen(req, timeout=25) as r:
-    body = r.read().decode("utf-8","replace")
-except Exception as e:
-  print("L5_CALL_FAILED", str(e))
-  sys.exit(1)
-
-print("L5_RAW_RESPONSE_BEGIN")
-print(body[:4000])
-print("L5_RAW_RESPONSE_END")
-
-try:
-  o = json.loads(body)
-except Exception:
-  print("L5_BAD_JSON_RESPONSE")
-  sys.exit(1)
-
-# Pin checks (fail-closed)
-pk = (o.get("authority_pubkey_sha256") or "").strip().lower()
-img = (o.get("image_digest") or "").strip()
-if pk != pin_pk:
-  print("PIN_FAIL_AUTH_PUBKEY_SHA256", pk, pin_pk)
-  sys.exit(1)
-if img != pin_img:
-  print("PIN_FAIL_IMAGE_DIGEST", img, pin_img)
-  sys.exit(1)
-
-# Decision extraction (support multiple shapes)
-decision = ""
-if isinstance(o.get("decision"), str):
-  decision = o["decision"].strip()
-sp = o.get("signed_payload") or {}
-if not decision and isinstance(sp.get("decision"), str):
-  decision = sp["decision"].strip()
-sr = o.get("signed_record") or {}
-if not decision and isinstance(sr.get("decision"), str):
-  decision = sr["decision"].strip()
-
-print("DECISION=" + decision)
-
-if decision != "ALLOW":
-  findings = []
-  if isinstance(sp, dict) and isinstance(sp.get("findings"), list):
-    findings = sp.get("findings")
-  print("FINDINGS_COUNT=" + str(len(findings)))
-  if findings:
-    print(json.dumps(findings[:5], ensure_ascii=False))
-  sys.exit(1)
-
-print("L5_ALLOW_OK")
-PY
