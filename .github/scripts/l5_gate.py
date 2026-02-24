@@ -9,6 +9,7 @@ pin_pk = os.environ.get("L5_PUBKEY_SHA256","").strip().lower()
 pin_img = os.environ.get("L5_PIN_IMAGE_DIGEST","").strip()
 base = os.environ.get("BASE_SHA","").strip()
 head = os.environ.get("HEAD_SHA","").strip()
+event = os.environ.get("GITHUB_EVENT_NAME","").strip()
 
 if not auth: die("MISSING_ENV:L5_AUTH_URL")
 if not pin_pk: die("MISSING_ENV:L5_PUBKEY_SHA256")
@@ -18,6 +19,31 @@ if not head: die("MISSING_ENV:HEAD_SHA")
 if base == "0000000000000000000000000000000000000000": die("INVALID_BASE_SHA:all_zeros")
 if head == "0000000000000000000000000000000000000000": die("INVALID_HEAD_SHA:all_zeros")
 
+print("EVENT_NAME="+event)
+print("BASE_SHA="+base)
+print("HEAD_SHA="+head)
+
+# --- 1) PIN CHECK: AUTH PUBKEY MUST COME FROM /pubkey ---
+try:
+    pub_raw = urllib.request.urlopen(auth + "/pubkey", timeout=25).read().decode("utf-8","replace")
+except Exception as e:
+    die("PUBKEY_FETCH_FAILED " + str(e))
+
+try:
+    pub = json.loads(pub_raw)
+except Exception:
+    die("PUBKEY_BAD_JSON")
+
+got_pk = (pub.get("public_key_sha256") or "").strip().lower()
+if not got_pk:
+    die("PUBKEY_SHA256_MISSING")
+
+if got_pk != pin_pk:
+    die("PIN_FAIL_AUTH_PUBKEY_SHA256 got=" + got_pk + " expected=" + pin_pk)
+
+print("PUBKEY_PIN_OK")
+
+# --- 2) DIFF FACTS (added-lines only) ---
 diff = subprocess.check_output(
     ["git","diff","--unified=0",f"{base}..{head}"],
     text=True,
@@ -82,30 +108,29 @@ try:
 except Exception:
     die("L5_BAD_JSON_RESPONSE")
 
-pk=(o.get("authority_pubkey_sha256") or "").strip().lower()
-img=(o.get("image_digest") or "").strip()
-
-if pk!=pin_pk:
-    die("PIN_FAIL_AUTH_PUBKEY_SHA256 got=" + pk + " expected=" + pin_pk)
-
-if img!=pin_img:
+# --- 3) PIN CHECK: IMAGE DIGEST MUST MATCH ---
+img = (o.get("image_digest") or "").strip()
+if img != pin_img:
     die("PIN_FAIL_IMAGE_DIGEST got=" + img + " expected=" + pin_img)
 
-decision=(o.get("decision") or "").strip()
+print("IMAGE_PIN_OK")
+
+# --- 4) DECISION ---
+decision = (o.get("decision") or "").strip()
 if not decision and isinstance(o.get("signed_payload"), dict):
-    decision=(o["signed_payload"].get("decision") or "").strip()
+    decision = (o["signed_payload"].get("decision") or "").strip()
 if not decision and isinstance(o.get("signed_record"), dict):
-    decision=(o["signed_record"].get("decision") or "").strip()
+    decision = (o["signed_record"].get("decision") or "").strip()
 
 print("DECISION="+decision)
 
-if decision!="ALLOW":
-    sp=o.get("signed_payload") or {}
-    f=sp.get("findings") if isinstance(sp,dict) else None
-    if isinstance(f,list):
+if decision != "ALLOW":
+    sp = o.get("signed_payload") or {}
+    f = sp.get("findings") if isinstance(sp, dict) else None
+    if isinstance(f, list):
         print("FINDINGS_COUNT="+str(len(f)))
         if f:
-            print(json.dumps(f[:5],ensure_ascii=False))
+            print(json.dumps(f[:5], ensure_ascii=False))
     sys.exit(1)
 
 print("L5_ALLOW_OK")
