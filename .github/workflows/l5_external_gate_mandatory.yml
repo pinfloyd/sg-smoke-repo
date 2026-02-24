@@ -1,0 +1,44 @@
+name: L5 External Admission Gate (MANDATORY / fail-closed)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: {}
+
+jobs:
+  l5_gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: External L5 Gate
+        shell: bash
+        env:
+          L5_AUTH_URL: ${{ secrets.L5_AUTH_URL }}
+          L5_PUBKEY_SHA256: ${{ secrets.L5_PUBKEY_SHA256 }}
+          L5_PIN_IMAGE_DIGEST: ${{ secrets.L5_PIN_IMAGE_DIGEST }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${L5_AUTH_URL:-}" ]; then exit 1; fi
+          if [ -z "${L5_PUBKEY_SHA256:-}" ]; then exit 1; fi
+          if [ -z "${L5_PIN_IMAGE_DIGEST:-}" ]; then exit 1; fi
+
+          DIFF_FACTS=$(git diff --unified=0 "${BASE_SHA}..${HEAD_SHA}" | grep '^+' | grep -v '+++' | sed 's/^+//' | jq -R -s -c 'split("\n")[:-1] | map({file:"unknown",line:0,content:.})')
+
+          RESPONSE=$(curl -sS -X POST "${L5_AUTH_URL}/admit" \
+            -H "Content-Type: application/json" \
+            --data "{\"diff_facts\":${DIFF_FACTS}}")
+
+          DECISION=$(echo "$RESPONSE" | jq -r '.signed_payload.decision')
+
+          if [ "$DECISION" != "ALLOW" ]; then
+            echo "DENY"
+            exit 1
+          fi
+
+          echo "L5_ALLOW_OK"
