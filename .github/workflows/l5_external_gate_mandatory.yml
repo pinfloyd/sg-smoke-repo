@@ -22,8 +22,11 @@ jobs:
           L5_AUTH_URL: ${{ secrets.L5_AUTH_URL }}
           L5_PUBKEY_SHA256: ${{ secrets.L5_PUBKEY_SHA256 }}
           L5_PIN_IMAGE_DIGEST: ${{ secrets.L5_PIN_IMAGE_DIGEST }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
+          echo "EVENT_NAME=${GITHUB_EVENT_NAME}"
+          echo "BASE_SHA=${BASE_SHA}"
+          echo "HEAD_SHA=${HEAD_SHA}"
           python3 .github/scripts/l5_gate.py

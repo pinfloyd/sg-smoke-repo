@@ -1,10 +1,22 @@
 import os, json, re, subprocess, sys, urllib.request
 
-auth = os.environ["L5_AUTH_URL"].rstrip("/")
-pin_pk = os.environ["L5_PUBKEY_SHA256"].strip().lower()
-pin_img = os.environ["L5_PIN_IMAGE_DIGEST"].strip()
-base = os.environ["BASE_SHA"]
-head = os.environ["HEAD_SHA"]
+def die(msg: str, code: int = 1):
+    print(msg)
+    sys.exit(code)
+
+auth = os.environ.get("L5_AUTH_URL","").rstrip("/")
+pin_pk = os.environ.get("L5_PUBKEY_SHA256","").strip().lower()
+pin_img = os.environ.get("L5_PIN_IMAGE_DIGEST","").strip()
+base = os.environ.get("BASE_SHA","").strip()
+head = os.environ.get("HEAD_SHA","").strip()
+
+if not auth: die("MISSING_ENV:L5_AUTH_URL")
+if not pin_pk: die("MISSING_ENV:L5_PUBKEY_SHA256")
+if not pin_img: die("MISSING_ENV:L5_PIN_IMAGE_DIGEST")
+if not base: die("MISSING_ENV:BASE_SHA")
+if not head: die("MISSING_ENV:HEAD_SHA")
+if base == "0000000000000000000000000000000000000000": die("INVALID_BASE_SHA:all_zeros")
+if head == "0000000000000000000000000000000000000000": die("INVALID_HEAD_SHA:all_zeros")
 
 diff = subprocess.check_output(
     ["git","diff","--unified=0",f"{base}..{head}"],
@@ -57,30 +69,43 @@ req = urllib.request.Request(
 )
 
 try:
-    body = urllib.request.urlopen(req,timeout=25).read().decode()
+    body = urllib.request.urlopen(req,timeout=25).read().decode("utf-8","replace")
 except Exception as e:
-    print("L5_CALL_FAILED",str(e))
-    sys.exit(1)
+    die("L5_CALL_FAILED " + str(e))
 
-print(body)
+print("L5_RAW_RESPONSE_BEGIN")
+print(body[:4000])
+print("L5_RAW_RESPONSE_END")
 
-o = json.loads(body)
+try:
+    o = json.loads(body)
+except Exception:
+    die("L5_BAD_JSON_RESPONSE")
 
 pk=(o.get("authority_pubkey_sha256") or "").strip().lower()
 img=(o.get("image_digest") or "").strip()
 
 if pk!=pin_pk:
-    print("PIN_FAIL_AUTH")
-    sys.exit(1)
+    die("PIN_FAIL_AUTH_PUBKEY_SHA256 got=" + pk + " expected=" + pin_pk)
 
 if img!=pin_img:
-    print("PIN_FAIL_IMAGE")
-    sys.exit(1)
+    die("PIN_FAIL_IMAGE_DIGEST got=" + img + " expected=" + pin_img)
 
-decision=o.get("decision","").strip()
+decision=(o.get("decision") or "").strip()
+if not decision and isinstance(o.get("signed_payload"), dict):
+    decision=(o["signed_payload"].get("decision") or "").strip()
+if not decision and isinstance(o.get("signed_record"), dict):
+    decision=(o["signed_record"].get("decision") or "").strip()
+
 print("DECISION="+decision)
 
 if decision!="ALLOW":
+    sp=o.get("signed_payload") or {}
+    f=sp.get("findings") if isinstance(sp,dict) else None
+    if isinstance(f,list):
+        print("FINDINGS_COUNT="+str(len(f)))
+        if f:
+            print(json.dumps(f[:5],ensure_ascii=False))
     sys.exit(1)
 
 print("L5_ALLOW_OK")
