@@ -3,6 +3,10 @@ name: L5 External Admission Gate
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - "ci-harmless-*"
+      - "ci-secret-*"
   workflow_dispatch: {}
 
 jobs:
