@@ -1,0 +1,125 @@
+SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+DATE_UTC = 2026-02-21T08:13:30Z
+REPO = pinfloyd/sg-smoke-repo
+BRANCH = leak-test
+PUSH_HEAD_SHA = f0e78e87382c7e0a74c32362542bf228d8ea608e
+RUN_ID = 22253408561
+RUN_URL = https://github.com/pinfloyd/sg-smoke-repo/actions/runs/22253408561
+RUN_STATUS = completed
+RUN_CONCLUSION = failure
+RUN_EVENT = push
+WORKFLOW = Secrets-Guard Demo
+RUN_CREATED_AT = 02/21/2026 08:13:35
+PINNED_ACTION = pinfloyd/secrets-guard@v2.2.0
+
+=== RUN_LOG_BEGIN ===
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	я╗┐2026-02-21T08:13:39.5645432Z ##[group]Run pinfloyd/secrets-guard@v2.2.0
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5646096Z ##[endgroup]
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5751966Z ##[group]Run set -euo pipefail
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5752622Z [36;1mset -euo pipefail[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5753143Z [36;1mecho "EVENT: $GITHUB_EVENT_NAME"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5753723Z [36;1mecho "GITHUB_SHA: ${GITHUB_SHA:-}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5754263Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5755004Z [36;1m# Resolve base/head SHAs deterministically by event type[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5755732Z [36;1mif [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5756547Z [36;1m  BASE_SHA=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5757080Z [36;1m  HEAD_SHA=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5757550Z [36;1m  echo "PR_BASE_SHA: ${BASE_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5758104Z [36;1m  echo "PR_HEAD_SHA: ${HEAD_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5758679Z [36;1m  # Ensure BASE_SHA exists locally for diff[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5759481Z [36;1m  git fetch --no-tags --prune --depth=50 origin "${BASE_SHA}" >/dev/null 2>&1 || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5760324Z [36;1m  RANGE="${BASE_SHA}..${HEAD_SHA}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5760931Z [36;1melif [ "${GITHUB_EVENT_NAME}" = "push" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5761546Z [36;1m  # Prefer before..after if available[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5762183Z [36;1m  BEFORE="ef02843964291ff073d249758d37214fb98fd2ce"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5762860Z [36;1m  AFTER="f0e78e87382c7e0a74c32362542bf228d8ea608e"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5763481Z [36;1m  echo "PUSH_BEFORE: ${BEFORE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5764021Z [36;1m  echo "PUSH_AFTER:  ${AFTER}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5764760Z [36;1m  git fetch --no-tags --prune --depth=50 origin "${BEFORE}" >/dev/null 2>&1 || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5765535Z [36;1m  RANGE="${BEFORE}..${AFTER}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5766033Z [36;1melse[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5766848Z [36;1m  # Manual runs: diff HEAD~1..HEAD if possible, otherwise scan nothing deterministically[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5767712Z [36;1m  if git rev-parse HEAD~1 >/dev/null 2>&1; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5768293Z [36;1m    RANGE="HEAD~1..HEAD"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5768766Z [36;1m  else[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5769155Z [36;1m    RANGE=""[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5769568Z [36;1m  fi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5769975Z [36;1m  echo "MANUAL_RANGE: ${RANGE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5770480Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5770855Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5771248Z [36;1mif [ -z "${RANGE}" ]; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5771771Z [36;1m  echo "DIFF_RANGE: (empty) -> OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5772307Z [36;1m  echo "SECRETS-GUARD: OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5772799Z [36;1m  exit 0[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5773187Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5773555Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5773946Z [36;1mecho "DIFF_RANGE: ${RANGE}"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5774419Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5775079Z [36;1m# Create a unified=0 diff (minimal), then extract only added lines (ignore +++ file headers)[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5776001Z [36;1mgit diff --unified=0 "${RANGE}" > /tmp/sg_diff.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5776835Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5777350Z [36;1mecho "DIFF_BYTES: $(wc -c < /tmp/sg_diff.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5778107Z [36;1mecho "DIFF_LINES: $(wc -l < /tmp/sg_diff.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5778721Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5779097Z [36;1m# Added lines only[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5779802Z [36;1mgrep -E '^\+' /tmp/sg_diff.txt | grep -Ev '^\+\+\+' | sed 's/^\+//' > /tmp/sg_added.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5780566Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5781147Z [36;1mecho "ADDED_LINES: $(wc -l < /tmp/sg_added.txt | tr -d ' ')"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5781808Z [36;1mecho "ADDED_PREVIEW_FIRST_30:"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5782359Z [36;1mhead -n 30 /tmp/sg_added.txt || true[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5782877Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5783328Z [36;1m# Minimal high-signal rule for demo: sk- token[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5784070Z [36;1mif grep -E "sk-[A-Za-z0-9]{20,}" /tmp/sg_added.txt >/dev/null 2>&1; then[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5785038Z [36;1m  echo "SECRETS-GUARD: VIOLATION DETECTED"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5785640Z [36;1m  echo "Rule: GENERIC_SK_TOKEN_PATTERN"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5786192Z [36;1m  echo "Status: HARD FAIL"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5786809Z [36;1m  exit 1[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5787201Z [36;1mfi[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5787589Z [36;1m[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5788117Z [36;1mecho "SECRETS-GUARD: OK"[0m
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5824096Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5824760Z ##[endgroup]
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5905069Z EVENT: push
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5905912Z GITHUB_SHA: f0e78e87382c7e0a74c32362542bf228d8ea608e
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5907221Z PUSH_BEFORE: ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.5908146Z PUSH_AFTER:  f0e78e87382c7e0a74c32362542bf228d8ea608e
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7421864Z DIFF_RANGE: ef02843964291ff073d249758d37214fb98fd2ce..f0e78e87382c7e0a74c32362542bf228d8ea608e
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7476995Z DIFF_BYTES: 28805
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7493112Z DIFF_LINES: 311
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7530448Z ADDED_LINES: 258
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7531195Z ADDED_PREVIEW_FIRST_30:
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7539414Z       - uses: pinfloyd/secrets-guard@v2.2.0
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7540370Z SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7541466Z DATE_UTC = 2026-02-21T07:21:15Z
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7542324Z REPO = pinfloyd/sg-smoke-repo
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7542958Z BRANCH = leak-test
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7543450Z PUSH_HEAD_SHA = ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7544095Z PINNED_ACTION = pinfloyd/secrets-guard@v2.1.0
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7544653Z GH_CLI = FOUND
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7545045Z RUN_MATCH = NOT_FOUND
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7545682Z RUN_LOG = NOT_AVAILABLE (run not visible yet via gh, or gh not authenticated)
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7546227Z 
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7546641Z === RUN_LOG_BEGIN ===
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7547084Z (missing)
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7547480Z === RUN_LOG_END ===
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7548506Z 60810efda500bf37fcec9b284d2789246dea1fba15cf20e22077eb2a1ba9e672  PROOF_leak_push_v2_1_0_ef02843964291ff073d249758d37214fb98fd2ce.txt
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7549710Z SECRETS-GUARD_SMOKE_PROOF = leak-detected (expected failure)
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7550352Z DATE_UTC = 2026-02-21T07:41:12Z
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7550836Z REPO = pinfloyd/sg-smoke-repo
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7551323Z BRANCH = leak-test
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7551813Z PUSH_HEAD_SHA = ef02843964291ff073d249758d37214fb98fd2ce
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7552411Z RUN_ID = 22252699092
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7553019Z RUN_URL = https://github.com/pinfloyd/sg-smoke-repo/actions/runs/22252699092
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7553740Z RUN_STATUS = completed
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7554188Z RUN_CONCLUSION = success
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7554625Z RUN_EVENT = push
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7555167Z WORKFLOW = Secrets-Guard Demo
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7555976Z RUN_CREATED_AT = 02/21/2026 07:21:19
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7557423Z PINNED_ACTION = pinfloyd/secrets-guard@v2.1.0
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7558074Z 
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7558328Z === RUN_LOG_BEGIN ===
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7559275Z SECRETS-GUARD: VIOLATION DETECTED
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7560029Z Rule: GENERIC_SK_TOKEN_PATTERN
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7560513Z Status: HARD FAIL
+secrets-guard	Run pinfloyd/secrets-guard@v2.2.0	2026-02-21T08:13:39.7574290Z ##[error]Process completed with exit code 1.
+=== RUN_LOG_END ===
