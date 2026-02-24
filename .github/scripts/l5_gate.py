@@ -109,7 +109,13 @@ except Exception:
     die("L5_BAD_JSON_RESPONSE")
 
 # --- 3) PIN CHECK: IMAGE DIGEST MUST MATCH ---
-img = (o.get("image_digest") or "").strip()
+img = ""
+if isinstance(o.get("signed_record"), dict):
+    img = (o["signed_record"].get("image_digest") or "").strip()
+elif isinstance(o.get("signed_payload"), dict):
+    img = (o["signed_payload"].get("image_digest") or "").strip()
+else:
+    img = (o.get("image_digest") or "").strip().strip()
 if img != pin_img:
     die("PIN_FAIL_IMAGE_DIGEST got=" + img + " expected=" + pin_img)
 
@@ -134,3 +140,4 @@ if decision != "ALLOW":
     sys.exit(1)
 
 print("L5_ALLOW_OK")
+
