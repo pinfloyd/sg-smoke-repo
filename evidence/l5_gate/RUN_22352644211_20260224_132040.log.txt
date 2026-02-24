@@ -1,0 +1,152 @@
+l5_gate	Set up job	я╗┐2026-02-24T13:20:57.8715503Z Current runner version: '2.331.0'
+l5_gate	Set up job	2026-02-24T13:20:57.8744029Z ##[group]Runner Image Provisioner
+l5_gate	Set up job	2026-02-24T13:20:57.8744964Z Hosted Compute Agent
+l5_gate	Set up job	2026-02-24T13:20:57.8745868Z Version: 20260123.484
+l5_gate	Set up job	2026-02-24T13:20:57.8746578Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+l5_gate	Set up job	2026-02-24T13:20:57.8747321Z Build Date: 2026-01-23T19:41:17Z
+l5_gate	Set up job	2026-02-24T13:20:57.8747973Z Worker ID: {56472fff-9235-452f-b81e-b562c52aae51}
+l5_gate	Set up job	2026-02-24T13:20:57.8748679Z Azure Region: centralus
+l5_gate	Set up job	2026-02-24T13:20:57.8749254Z ##[endgroup]
+l5_gate	Set up job	2026-02-24T13:20:57.8750790Z ##[group]Operating System
+l5_gate	Set up job	2026-02-24T13:20:57.8751518Z Ubuntu
+l5_gate	Set up job	2026-02-24T13:20:57.8751981Z 24.04.3
+l5_gate	Set up job	2026-02-24T13:20:57.8752483Z LTS
+l5_gate	Set up job	2026-02-24T13:20:57.8753083Z ##[endgroup]
+l5_gate	Set up job	2026-02-24T13:20:57.8753602Z ##[group]Runner Image
+l5_gate	Set up job	2026-02-24T13:20:57.8754147Z Image: ubuntu-24.04
+l5_gate	Set up job	2026-02-24T13:20:57.8754706Z Version: 20260201.15.1
+l5_gate	Set up job	2026-02-24T13:20:57.8756154Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+l5_gate	Set up job	2026-02-24T13:20:57.8757991Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+l5_gate	Set up job	2026-02-24T13:20:57.8758875Z ##[endgroup]
+l5_gate	Set up job	2026-02-24T13:20:57.8760040Z ##[group]GITHUB_TOKEN Permissions
+l5_gate	Set up job	2026-02-24T13:20:57.8762268Z Contents: read
+l5_gate	Set up job	2026-02-24T13:20:57.8762851Z Metadata: read
+l5_gate	Set up job	2026-02-24T13:20:57.8763503Z Packages: read
+l5_gate	Set up job	2026-02-24T13:20:57.8764076Z ##[endgroup]
+l5_gate	Set up job	2026-02-24T13:20:57.8766505Z Secret source: Actions
+l5_gate	Set up job	2026-02-24T13:20:57.8767526Z Prepare workflow directory
+l5_gate	Set up job	2026-02-24T13:20:57.9107156Z Prepare all required actions
+l5_gate	Set up job	2026-02-24T13:20:57.9148615Z Getting action download info
+l5_gate	Set up job	2026-02-24T13:20:58.2561870Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+l5_gate	Set up job	2026-02-24T13:20:58.4600878Z Complete job name: l5_gate
+l5_gate	Run actions/checkout@v4	я╗┐2026-02-24T13:20:58.5421109Z ##[group]Run actions/checkout@v4
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5422039Z with:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5422457Z   fetch-depth: 0
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5422904Z   repository: pinfloyd/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5423676Z   token: ***
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5424078Z   ssh-strict: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5424481Z   ssh-user: git
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5424888Z   persist-credentials: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5425593Z   clean: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5426042Z   sparse-checkout-cone-mode: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5426535Z   fetch-tags: false
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5426955Z   show-progress: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5427373Z   lfs: false
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5427786Z   submodules: false
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5428210Z   set-safe-directory: true
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.5428930Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6521334Z Syncing repository: pinfloyd/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6523070Z ##[group]Getting Git version info
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6523845Z Working directory is '/home/runner/work/sg-smoke-repo/sg-smoke-repo'
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6524960Z [command]/usr/bin/git version
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6609952Z git version 2.52.0
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6635820Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6649669Z Temporarily overriding HOME='/home/runner/work/_temp/35ec692b-bdb4-46c8-b176-ecbdfe314edd' before making global git config changes
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6651898Z Adding repository directory to the temporary git global config as a safe directory
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6662399Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-smoke-repo/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6701594Z Deleting the contents of '/home/runner/work/sg-smoke-repo/sg-smoke-repo'
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6705433Z ##[group]Initializing the repository
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6709841Z [command]/usr/bin/git init /home/runner/work/sg-smoke-repo/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6806690Z hint: Using 'master' as the name for the initial branch. This default branch name
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6808097Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6809095Z hint: to use in all of your new repositories, which will suppress this warning,
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6810134Z hint: call:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6810748Z hint:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6811580Z hint: 	git config --global init.defaultBranch <name>
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6812218Z hint:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6812809Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6813762Z hint: 'development'. The just-created branch can be renamed via this command:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6814534Z hint:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6815203Z hint: 	git branch -m <name>
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6815836Z hint:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6816496Z hint: Disable this message with "git config set advice.defaultBranchName false"
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6817599Z Initialized empty Git repository in /home/runner/work/sg-smoke-repo/sg-smoke-repo/.git/
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6821272Z [command]/usr/bin/git remote add origin https://github.com/pinfloyd/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6854238Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6855427Z ##[group]Disabling automatic garbage collection
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6858404Z [command]/usr/bin/git config --local gc.auto 0
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6886905Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6887806Z ##[group]Setting up auth
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6893511Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.6923080Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7256527Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7287966Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7520614Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7564006Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7793770Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7830608Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7832090Z ##[group]Fetching the repository
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:58.7840478Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1435374Z From https://github.com/pinfloyd/sg-smoke-repo
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1436953Z  * [new branch]      ci-harmless-20260224-120915 -> origin/ci-harmless-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1438125Z  * [new branch]      ci-secret-20260224-120915 -> origin/ci-secret-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1438928Z  * [new branch]      leak-test  -> origin/leak-test
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1439547Z  * [new branch]      master     -> origin/master
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1522022Z [command]/usr/bin/git branch --list --remote origin/ci-secret-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1546970Z   origin/ci-secret-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1556013Z [command]/usr/bin/git rev-parse refs/remotes/origin/ci-secret-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1577063Z a4b73dd4f4cf6fcf8b2b64786341a4e4d4248035
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1582502Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1583868Z ##[group]Determining the checkout info
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1585491Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1589491Z [command]/usr/bin/git sparse-checkout disable
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1632396Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1658470Z ##[group]Checking out the ref
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1663756Z [command]/usr/bin/git checkout --progress --force -B ci-secret-20260224-120915 refs/remotes/origin/ci-secret-20260224-120915
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1716765Z Switched to a new branch 'ci-secret-20260224-120915'
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1720301Z branch 'ci-secret-20260224-120915' set up to track 'origin/ci-secret-20260224-120915'.
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1725607Z ##[endgroup]
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1758964Z [command]/usr/bin/git log -1 --format=%H
+l5_gate	Run actions/checkout@v4	2026-02-24T13:20:59.1781366Z a4b73dd4f4cf6fcf8b2b64786341a4e4d4248035
+l5_gate	Run L5 Gate	я╗┐2026-02-24T13:20:59.1983817Z ##[group]Run set -euo pipefail
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.1984473Z [36;1mset -euo pipefail[0m
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.1985017Z [36;1mecho "EVENT_NAME=${GITHUB_EVENT_NAME}"[0m
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.1985860Z [36;1mecho "BASE_SHA=${BASE_SHA}"[0m
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.1986383Z [36;1mecho "HEAD_SHA=${HEAD_SHA}"[0m
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.1986936Z [36;1mpython3 .github/scripts/l5_gate.py[0m
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2021988Z shell: /usr/bin/bash -e {0}
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2022528Z env:
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2023028Z   L5_AUTH_URL: ***
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2023715Z   L5_PUBKEY_SHA256: ***
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2024459Z   L5_PIN_IMAGE_DIGEST: ***
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2024978Z   BASE_SHA: e150108af12e159d2aa2f74411ec5b330369e2a9
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2025869Z   HEAD_SHA: a4b73dd4f4cf6fcf8b2b64786341a4e4d4248035
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2026437Z ##[endgroup]
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2100759Z EVENT_NAME=push
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2101350Z BASE_SHA=e150108af12e159d2aa2f74411ec5b330369e2a9
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.2101996Z HEAD_SHA=a4b73dd4f4cf6fcf8b2b64786341a4e4d4248035
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3963402Z EVENT_NAME=push
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3964196Z BASE_SHA=e150108af12e159d2aa2f74411ec5b330369e2a9
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3965285Z HEAD_SHA=a4b73dd4f4cf6fcf8b2b64786341a4e4d4248035
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3966162Z PUBKEY_PIN_OK
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3966721Z L5_RAW_RESPONSE_BEGIN
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3976298Z {"signed_record":{"intent":{"action_type":"GIT_COMMIT_DIFF","payload":{"diff_facts":[{"file":"leak_intent.txt","line":2,"added":"OPENAI_SECRET_KEY=sk-leaktest-20260224_132040-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"}]}},"decision":"DENY","findings":[{"rule_id":201,"type":"openai_secret_key","pattern":"OPENAI_SECRET_KEY=","file":"leak_intent.txt","line":2,"match":"OPENAI_SECRET_KEY="},{"rule_id":202,"type":"openai_sk_prefix","pattern":"sk-","file":"leak_intent.txt","line":2,"match":"sk-"}],"policy_version":"v2.1-openai_tokens_v0","authority_id":"ADMIT_AUTHORITY_V1","image_digest":"***","timestamp_utc":"2026-02-24T13:20:59Z","seq":44,"prev_hash":"76adb63b819faf0334d2b6e6154302f408d656d1036c94c97e1c130816e7e428","decision_hash":"3481202d6841081715b9f0873f32ab486a509b5cdcb2f2ec4e6c88d7e5901e1a","record_hash":"18d49af576acdec240df0778100b6996d0c6f7f71a821ffae52cf3338429fae5","signature":"mcIhkhTAFW50ocyOdGSi3YzUCfwKNcqCPaGneV5z+5ILwUin4jUVlu+xkYyg2fGee8EqqH3h14HFfKnJGFEnCg=="},"ledger_new_hash":"29190abc5bcedf6d95da13d0a486eb84f526873e1885e4de08daeba78886dafd"}
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3983747Z L5_RAW_RESPONSE_END
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3984260Z IMAGE_PIN_OK
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.3984666Z DECISION=DENY
+l5_gate	Run L5 Gate	2026-02-24T13:20:59.4076546Z ##[error]Process completed with exit code 1.
+l5_gate	Post Run actions/checkout@v4	я╗┐2026-02-24T13:20:59.4197686Z Post job cleanup.
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5138982Z [command]/usr/bin/git version
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5174227Z git version 2.52.0
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5216431Z Temporarily overriding HOME='/home/runner/work/_temp/581495da-2815-4418-bc9b-3277b30fe1aa' before making global git config changes
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5217964Z Adding repository directory to the temporary git global config as a safe directory
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5221811Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-smoke-repo/sg-smoke-repo
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5262212Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5296669Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5553051Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5573798Z http.https://github.com/.extraheader
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5586197Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5616495Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5832979Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+l5_gate	Post Run actions/checkout@v4	2026-02-24T13:20:59.5862415Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+l5_gate	Complete job	я╗┐2026-02-24T13:20:59.6183875Z Cleaning up orphan processes

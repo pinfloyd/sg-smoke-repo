@@ -1,0 +1,9 @@
+REPO=pinfloyd/sg-smoke-repo
+BRANCH=5
+RUN_ID=
+STATUS=
+CONCLUSION=
+
+=== RUN VIEW (JSON) ===
+
+=== RUN LOG ===
