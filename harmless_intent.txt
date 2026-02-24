@@ -1,0 +1,2 @@
+# harmless test (should ALLOW)
+PING=ok-20260224_131032
